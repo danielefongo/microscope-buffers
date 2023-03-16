@@ -1,3 +1,5 @@
+local highlight = require("microscope.highlight")
+local constants = require("microscope.constants")
 local lists = {}
 
 function lists.listed()
@@ -15,8 +17,12 @@ function lists.listed()
     parser = function(data)
       local elements = vim.split(data.text, ":", {})
 
+      local highlights =
+        highlight.new(data.highlights, data.text):hl_match(constants.color.color1, "(%d+:)(.*)", 1):get_highlights()
+
       return {
         text = data.text,
+        highlights = highlights,
         buffer = tonumber(elements[1]) + 0,
       }
     end,
