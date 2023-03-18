@@ -1,8 +1,8 @@
 local highlight = require("microscope.highlight")
 local constants = require("microscope.constants")
-local lists = {}
+local steps = {}
 
-function lists.listed()
+function steps.listed()
   return {
     fun = function(on_data)
       local bufs = {}
@@ -29,4 +29,4 @@ function lists.listed()
   }
 end
 
-return lists
+return steps
