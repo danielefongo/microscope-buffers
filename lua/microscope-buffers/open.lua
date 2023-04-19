@@ -1,3 +1,3 @@
-return function(data, win, _)
-  vim.api.nvim_win_set_buf(win, data.buffer)
+return function(data, request)
+  vim.api.nvim_win_set_buf(request.win, data.buffer)
 end

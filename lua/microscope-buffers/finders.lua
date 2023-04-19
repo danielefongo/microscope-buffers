@@ -1,14 +1,15 @@
 local preview = require("microscope-buffers.preview")
 local open = require("microscope-buffers.open")
-local buffers_steps = require("microscope-buffers.steps")
-local steps = require("microscope.steps")
+local buffers_lenses = require("microscope-buffers.lenses")
+local lenses = require("microscope.builtin.lenses")
+local buffers_parsers = require("microscope-buffers.parsers")
+local parsers = require("microscope.builtin.parsers")
 
 return {
   buffer = {
+    lens = lenses.fzf(buffers_lenses.listed()),
+    parsers = { buffers_parsers.buffer, parsers.fuzzy },
     open = open,
     preview = preview,
-    chain = function(text)
-      return { buffers_steps.listed(), steps.fzf(text) }
-    end,
   },
 }
