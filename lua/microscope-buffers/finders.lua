@@ -7,7 +7,7 @@ local parsers = require("microscope.builtin.parsers")
 
 return {
   buffer = {
-    lens = lenses.fzf(buffers_lenses.listed()),
+    lens = lenses.fzf(lenses.cache(buffers_lenses.listed())),
     parsers = { buffers_parsers.buffer, parsers.fuzzy },
     open = open,
     preview = preview,

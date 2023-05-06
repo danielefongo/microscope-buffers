@@ -2,7 +2,7 @@ local highlight = require("microscope.api.highlight")
 local parsers = {}
 
 function parsers.buffer(data)
-  local elements = vim.split(data.text, ":", {})
+  local elements = vim.split(data.text, ": ", {})
 
   data.buffer = tonumber(elements[1]) + 0
   data.highlights =
